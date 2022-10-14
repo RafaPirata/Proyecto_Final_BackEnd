@@ -1,0 +1,86 @@
+[
+	{
+		"timestamp": "13/10/2022 00:11:26",
+		"products": [
+			{
+				"timestamp": "12/10/2022 23:23:57",
+				"nombre": "hambuerguesa",
+				"descripcion": "Completa",
+				"codigo": "1A",
+				"foto": "",
+				"precio": 650,
+				"stock": 20,
+				"id": 2
+			},
+			{
+				"timestamp": "12/10/2022 23:23:28",
+				"nombre": "hambuerguesa",
+				"descripcion": "Simple",
+				"codigo": "1A",
+				"foto": "",
+				"precio": 550,
+				"stock": 20,
+				"id": 1
+			}
+		],
+		"id": 1
+	},
+	{
+		"timestamp": "13/10/2022 00:17:47",
+		"products": [
+			{
+				"timestamp": "12/10/2022 23:24:11",
+				"nombre": "hambuerguesa",
+				"descripcion": "Completa + papas",
+				"codigo": "1A",
+				"foto": "",
+				"precio": 650,
+				"stock": 20,
+				"id": 3
+			},
+			{
+				"timestamp": "12/10/2022 23:24:26",
+				"nombre": "hambuerguesa",
+				"descripcion": "Completa P y G",
+				"codigo": "1A",
+				"foto": "",
+				"precio": 650,
+				"stock": 20,
+				"id": 4
+			}
+		],
+		"id": 2
+	},
+	{
+		"timestamp": "13/10/2022 00:24:50",
+		"products": [
+			{
+				"timestamp": "12/10/2022 23:23:28",
+				"nombre": "hambuerguesa",
+				"descripcion": "Simple",
+				"codigo": "1A",
+				"foto": "",
+				"precio": 550,
+				"stock": 20,
+				"id": 1
+			}
+		],
+		"id": 3
+	},
+	{
+		"timestamp": "13/10/2022 00:24:55",
+		"products": [
+			{
+				"timestamp": "12/10/2022 23:23:28",
+				"nombre": "hambuerguesa",
+				"descripcion": "Simple",
+				"codigo": "1A",
+				"foto": "",
+				"precio": 550,
+				"stock": 20,
+				"id": 1
+			}
+		],
+		"id": 4
+	}
+]
