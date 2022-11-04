@@ -1,10 +1,88 @@
 const { Router } = require("express");
-const Funciones = require("../container/Funciones.js");
-const Cart = require("../class/cart.js");
-
 const rutasCarrito = Router();
-const fileCarrito = new Funciones("cart");
-const fileProdCarr = new Funciones("products");
+
+//-------------------Archivo-----------------------------------------------------------
+// const Archivo = require("../container/contenedorArchivo.js");
+// const Cart = require("../class/cart.js");
+// const fileCarrito = new Archivo("cart");
+// const fileProdCarr = new Archivo("products");
+
+// --------------------Firebase--------------------------------------------------------
+
+// const CartDaoFirebase = require("../daos/cart/CartDaoFirebase");
+// const cartDao = new CartDaoFirebase();
+// const { ProductosDaoFirebase } = require("../daos/products/prodDaosFirebase");
+// const prodCartDaos = new ProductosDaoFirebase();
+// --------------------Firebase--------------------------------------------------------
+const CartDaoMondoDb = require("../daos/cart/CarritosDaoMongoDb");
+const cartDao = new CartDaoMondoDb();
+const ProductosDaoMongoDb = require("../daos/products/ProductosDaoMongoDb");
+const prodCartDaos = new ProductosDaoMongoDb();
+
+//-------------------------------MongooAtlas--------------------------------------------
+
+// ---crear nuevo carrito------- ok
+rutasCarrito.post("/fire", async (req, res) => {
+  let cart = await cartDao.save();
+  res.json({ status: "OK!", cart });
+});
+// --- cargar productos al id del carrito----- ok
+rutasCarrito.post("/fire/:id/products", async (req, res) => {
+  // ok funcionando
+  try {
+    const carritos = await cartDao.getById(req.params.id);
+    if (!carritos) {
+      return res.status(404).json({ msg: "Carrito no encontrado" });
+    }
+    console.log(carritos);
+    console.log(req.body.id);
+    const producto = await prodCartDaos.getById(req.body.id);
+    if (!producto) {
+      return res.status(404).json({ msg: "Producto no encontrado" });
+    }
+    console.log(producto);
+    // carritos.push(producto);
+    let newProd = await cartDao.updateCart(req.params.id, producto);
+    res.status(200).json({
+      msg: "Producto agregado al carrito",
+      status: "OK!",
+      cart: newProd,
+    });
+  } catch (error) {
+    res.status(400).json({ msg: `Error ${error}` });
+  }
+});
+// mostrar los carritos por id, ok funcionando
+rutasCarrito.get("/fire/:id/products", async (req, res) => {
+  let { id } = req.params;
+  let cart = await cartDao.getById(id);
+  if (cart.productos !== undefined) {
+    res.json({ response: "No hay productos en carrito" });
+  } else {
+    res.json({ id: cart });
+  }
+});
+// -- mostrar todos los carritos
+rutasCarrito.get("/fire", async (req, res) => {
+  // ok funcionando
+  let cart = await cartDao.getAllCarts();
+  res.json({ cart: cart });
+});
+// --- eliminar carrito segun id ----- ok funcionando
+rutasCarrito.delete("/fire/:id", async (req, res) => {
+  let { id } = req.params;
+  let deleted = await cartDao.delete(id);
+  res.json({ status: "OK!", deleted });
+});
+// ---- Eliminar productos del id del carrito segun id de producto
+rutasCarrito.delete("/fire/:id/products/:id_prod", async (req, res) => {
+  const { id, id_prod } = req.params;
+  let respuesta = cartDao.deleteCartById(id, id_prod);
+
+  res.json(JSON.stringify(respuesta));
+});
+
+///-------------------------------------------- archivo-------------------------------------------------------
 
 // --------- para agregar un nuevo carrito---------
 rutasCarrito.post("/", (req, res) => {

@@ -19,7 +19,6 @@ app.all("*", (req, res) => {
   });
 });
 
-// Listen
 app.listen(PORT, () =>
-  console.log(`Server de Primera entrega en Puerto ${PORT}`)
+  console.log(`Server de Segunda entrega en Puerto ${PORT}`)
 );

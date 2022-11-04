@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-module.exports = class Funciones {
+module.exports = class Archivo {
   constructor(name) {
     this.name = `${__dirname}/db/${name}.json`;
 

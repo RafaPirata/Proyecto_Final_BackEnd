@@ -1,0 +1,50 @@
+[
+	{
+		"nombre": "hambuerguesa",
+		"descripcion": "Simple",
+		"codigo": "1A",
+		"foto": "",
+		"precio": 550,
+		"stock": 20
+	},
+	{
+		"nombre": "hambuerguesa",
+		"descripcion": "Completa",
+		"codigo": "C34A",
+		"foto": "",
+		"precio": 650,
+		"stock": 20
+	},
+	{
+		"nombre": "hambuerguesa",
+		"descripcion": "Completa + papas",
+		"codigo": "1A",
+		"foto": "",
+		"precio": 650,
+		"stock": 20
+	},
+	{
+		"nombre": "hambuerguesa",
+		"descripcion": "Completa P y G",
+		"codigo": "1A",
+		"foto": "",
+		"precio": 650,
+		"stock": 20		
+	},
+	{		
+		"nombre": "hambuerguesa",
+		"descripcion": "Completa Aleman",
+		"codigo": "1A",
+		"foto": "",
+		"precio": 650,
+		"stock": 20		
+	},
+	{
+		"nombre": "hambuerguesa",
+		"descripcion": "Completa",
+		"codigo": "B002A",
+		"foto": "",
+		"precio": 650,
+		"stock": 20		
+	}
+]
