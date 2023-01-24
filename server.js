@@ -1,24 +1,25 @@
-const express = require("express");
-const rutasCarrito = require("./src/routes/cart.js");
-const rutasProductos = require("./src/routes/products.js");
 
-const app = express();
-// Puerto con env o 8080
-const PORT = process.env.PORT || 8080;
+const app = require('./app') //express()
+const logger = require('./utils/logger')
+// const PORT = process.env.PORT || 3000
+const PORT = process.argv[2] || 8000
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// Routes
-app.use("/api/products", rutasProductos);
-app.use("/api/cart", rutasCarrito);
-// para error de rutas
-app.all("*", (req, res) => {
-  return res.status(404).send({
-    Error: "La ruta no existe !!",
-  });
-});
+const initSocket = require('./utils/initSocket')
 
-app.listen(PORT, () =>
-  console.log(`Server de Segunda entrega en Puerto ${PORT}`)
-);
+const { Server: HttpServer } = require('http')
+const { Server: IOServer } = require('socket.io')
+
+const httpServer = new HttpServer(app)
+const io = new IOServer(httpServer)
+//------------------------------------------------------------------------
+initSocket(io)
+//--------------------------------------------------
+
+
+httpServer.listen(PORT, () => {
+    logger.info(`SERVER listen on port ${PORT}`)
+})
+
+
+module.exports = app

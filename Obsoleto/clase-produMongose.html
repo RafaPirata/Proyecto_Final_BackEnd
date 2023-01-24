@@ -1,0 +1,28 @@
+const mongoose = require("mongoose");
+
+const productosCollection = "productos";
+
+const ProductIDSchema = new mongoose.Schema({
+  id_prod: { type: String, require: true, maxLength: 32, trim: true },
+});
+
+const ProductSchema = new mongoose.Schema({
+  name: { type: String, required: true, maxlength: 100 },
+  description: { type: String, required: true, maxlength: 200 },
+  price: { type: Number, required: true },
+  picture: { type: String, required: false, maxlength: 250 },
+  code: { type: String, required: true, maxlength: 8 },
+  stock: { type: Number, min: 1 },
+});
+class Product {
+  constructor(nombre, descripcion, codigo, foto, precio, stock) {
+    this.timestamp = new Date().toLocaleString();
+    this.nombre = nombre || "";
+    this.descripcion = descripcion || "";
+    this.codigo = codigo || "";
+    this.foto = foto || "";
+    this.precio = precio || "";
+    this.stock = stock || "";
+  }
+}
+module.exports = { Product, ProductSchema, ProductIDSchema, productModel };

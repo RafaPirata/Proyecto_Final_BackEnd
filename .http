@@ -1,77 +1,17 @@
-----------------Carrito ---------------------------
+POST http://localhost:8082/api/productos-test/popular HTTP/1.1
+ 
+### GET
+GET http://localhost:4000/api/productos-test/ HTTP/1.1
 
 ### POST
-
-POST http://localhost:8080/api/cart/ HTTP/1.1
-Content-type: application/json
-
-### POST
-
-POST http://localhost:8080/api/cart/2/products HTTP/1.1
+POST http://localhost:4000/api/session/login HTTP/1.1
 Content-type: application/json
 
 {
-"id_prod": [3, 4]
+    "username": "rafa",
+    "password": "admin",
+    "admin": "true"
 }
 
-### DELETE
-
-DELETE http://localhost:8080/api/cart/5 HTTP/1.1
-Content-type: application/json
-
-### DELETE
-
-DELETE http://localhost:8080/api/cart/3/products/2 HTTP/1.1
-Content-type: application/json
-
 ### GET
-
-GET http://localhost:8080/api/cart/2/products HTTP/1.1
-Content-type: application/json
-
-### GET
-
-GET http://localhost:8080/api/cart/products HTTP/1.1
-Content-type: application/json
-
------------------------Productos----------------------
-
-### GET
-
-GET http://localhost:8080/api/products/ HTTP/1.1
-Content-type: application/json
-
-### GET
-
-GET http://localhost:8080/api/products/2 HTTP/1.1
-Content-type: application/json
-
-### POST
-
-POST http://localhost:8080/api/products/ HTTP/1.1
-Content-type: application/json
-
-{
-"descripcion": "Completa",
-"codigo": "B002A",
-"foto": "",
-"precio": 650,
-"stock": 20,
-"id": 2
-}
-
-### PUT
-
-PUT http://localhost:8080/api/products/2 HTTP/1.1
-Content-type: application/json
-
-{
-
-    "codigo": "C34A"
-
-}
-
-### DELETE
-
-DELETE http://localhost:8080/api/products/2 HTTP/1.1
-Content-type: application/json
+GET http://localhost:4000/api/session/ HTTP/1.1
